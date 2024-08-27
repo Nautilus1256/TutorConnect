@@ -11,4 +11,21 @@ class QuestionController extends Controller
     {
         return view('questions.index')->with(['questions' => $question->getPaginateByLimit()]);
     }
+    
+    public function show(Question $question)
+    {
+        return view('questions.show')->with(['question' => $question]);
+    }
+    
+    public function create()
+    {
+        return view('questions.create');
+    }
+    
+    public function store(Request $request, Question $question)
+    {
+        $input = $request['question'];
+        $question->fill($input)->save();
+        return redirect('/questions/' . $question->id);
+    }
 }
