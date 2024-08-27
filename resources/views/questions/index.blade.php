@@ -1,6 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        index
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Index') }}
+        </h2>
     </x-slot>
     <h1>Tutor Connect</h1>
     <div class='questions'>
