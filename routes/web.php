@@ -26,6 +26,9 @@ Route::get('/dashboard', function () {
 
 Route::controller(QuestionController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
+    Route::get('/questions/create', 'create')->name('create');
+    Route::get('/questions/{question}', 'show')->name('show');
+    Route::post('/questions', 'store')->name('store');
 });
 
 Route::middleware('auth')->group(function () {

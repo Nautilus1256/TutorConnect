@@ -9,6 +9,17 @@ class Question extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'title',
+        'body',
+        'user_id'
+    ];
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     public function getPaginateByLimit(int $limit_count = 2)
     {
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
