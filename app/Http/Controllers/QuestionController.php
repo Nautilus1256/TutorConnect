@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Http\Requests\QuestionRequest;
 
 class QuestionController extends Controller
 {
@@ -22,7 +23,7 @@ class QuestionController extends Controller
         return view('questions.create');
     }
     
-    public function store(Request $request, Question $question)
+    public function store(QuestionRequest $request, Question $question)
     {
         $input = $request['question'];
         $question->fill($input)->save();
