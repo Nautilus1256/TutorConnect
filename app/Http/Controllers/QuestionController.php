@@ -29,4 +29,16 @@ class QuestionController extends Controller
         $question->fill($input)->save();
         return redirect('/questions/' . $question->id);
     }
+    
+    public function edit(Question $question)
+    {
+        return view('questions/edit')->with(['question' => $question]);
+    }
+    
+    public function update(QuestionRequest $request, Question $question)
+    {
+        $input = $request['question'];
+        $question->fill($input)->save();
+        return redirect('/questions/' . $question->id);
+    }
 }

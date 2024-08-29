@@ -29,6 +29,8 @@ Route::controller(QuestionController::class)->middleware(['auth'])->group(functi
     Route::get('/questions/create', 'create')->name('create');
     Route::get('/questions/{question}', 'show')->name('show');
     Route::post('/questions', 'store')->name('store');
+    Route::get('/questions/{question}/edit','edit')->name('edit');
+    Route::put('/questions/{question}', 'update')->name('update');
 });
 
 Route::middleware('auth')->group(function () {
