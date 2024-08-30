@@ -26,12 +26,12 @@ Route::get('/dashboard', function () {
 
 Route::controller(QuestionController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
-    Route::get('/questions/create', 'create')->name('create');
-    Route::get('/questions/{question}', 'show')->name('show');
-    Route::post('/questions', 'store')->name('store');
-    Route::get('/questions/{question}/edit','edit')->name('edit');
-    Route::put('/questions/{question}', 'update')->name('update');
-    Route::delete('/questions/{question}', 'delete')->name('delete');
+    Route::get('/questions/create', 'create')->name('question_create');
+    Route::get('/questions/{question}', 'show')->name('question_show');
+    Route::post('/questions', 'store')->name('question_store');
+    Route::get('/questions/{question}/edit','edit')->name('question_edit');
+    Route::put('/questions/{question}', 'update')->name('question_update');
+    Route::delete('/questions/{question}', 'delete')->name('question_delete');
 });
 
 Route::middleware('auth')->group(function () {
