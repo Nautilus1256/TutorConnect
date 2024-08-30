@@ -13,6 +13,16 @@
         @method('DELETE')
         <button type="button" onclick="deleteQuestion({{ $question->id }})">削除</button>
     </form>
+    <div class="answers">
+        @foreach ($answers as $answer)
+            <div class="question">
+                <p>{{ $answer->comment }}</p>
+            </div>
+        @endforeach
+    </div>
+    <div class='paginate underline'>
+        {{ $answers->links() }}
+    </div>
     <div class='footer'>
         <a href="/" class='underline'>戻る</a>
     </div>

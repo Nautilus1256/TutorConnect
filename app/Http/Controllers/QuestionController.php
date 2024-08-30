@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Http\Requests\QuestionRequest;
+use App\Models\Answer;
 
 class QuestionController extends Controller
 {
@@ -13,9 +14,9 @@ class QuestionController extends Controller
         return view('questions.index')->with(['questions' => $question->getPaginateByLimit()]);
     }
     
-    public function show(Question $question)
+    public function show(Question $question, Answer $answer)
     {
-        return view('questions.show')->with(['question' => $question]);
+        return view('questions.show')->with(['question' => $question, 'answers' => $question->answers()->getPaginateByLimit()]);
     }
     
     public function create()
