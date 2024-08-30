@@ -31,6 +31,7 @@ Route::controller(QuestionController::class)->middleware(['auth'])->group(functi
     Route::post('/questions', 'store')->name('store');
     Route::get('/questions/{question}/edit','edit')->name('edit');
     Route::put('/questions/{question}', 'update')->name('update');
+    Route::delete('/questions/{question}', 'delete')->name('delete');
 });
 
 Route::middleware('auth')->group(function () {
