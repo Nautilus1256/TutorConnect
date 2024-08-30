@@ -25,14 +25,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::controller(QuestionController::class)->middleware(['auth'])->group(function(){
+Route::controller(QuestionController::class)->group(function(){
     Route::get('/', 'index')->name('index');
-    Route::get('/questions/create', 'create')->name('question_create');
+    Route::get('/questions/create', 'create')->name('question_create')->middleware(['auth']);
     Route::get('/questions/{question}', 'show')->name('question_show');
-    Route::post('/questions', 'store')->name('question_store');
-    Route::get('/questions/{question}/edit','edit')->name('question_edit');
-    Route::put('/questions/{question}', 'update')->name('question_update');
-    Route::delete('/questions/{question}', 'delete')->name('question_delete');
+    Route::post('/questions', 'store')->name('question_store')->middleware(['auth']);
+    Route::get('/questions/{question}/edit','edit')->name('question_edit')->middleware(['auth']);
+    Route::put('/questions/{question}', 'update')->name('question_update')->middleware(['auth']);
+    Route::delete('/questions/{question}', 'delete')->name('question_delete')->middleware(['auth']);
 });
 
 Route::controller(AnswerController::class)->middleware(['auth'])->group(function(){
