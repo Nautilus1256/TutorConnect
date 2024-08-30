@@ -41,4 +41,10 @@ class QuestionController extends Controller
         $question->fill($input)->save();
         return redirect('/questions/' . $question->id);
     }
+    
+    public function delete(Question $question)
+    {
+        $question->delete();
+        return redirect('/');
+    }
 }
