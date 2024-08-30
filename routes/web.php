@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,6 +33,11 @@ Route::controller(QuestionController::class)->middleware(['auth'])->group(functi
     Route::get('/questions/{question}/edit','edit')->name('question_edit');
     Route::put('/questions/{question}', 'update')->name('question_update');
     Route::delete('/questions/{question}', 'delete')->name('question_delete');
+});
+
+Route::controller(AnswerController::class)->middleware(['auth'])->group(function(){
+    Route::get('/questions/{question}/answers/create', 'create')->name('answer_create');
+    Route::post('/answers', 'store')->name('answer_store');
 });
 
 Route::middleware('auth')->group(function () {

@@ -2,7 +2,7 @@
     <h1>Tutor Connect</h1>
     <form action="/questions" method="POST">
         @csrf
-        <div class="user_name">
+        <div class="user_id">
             <input type="hidden" name="question[user_id]" value="{{ Auth::user()->id }}"/>
         </div>
         <div class="title">
@@ -16,8 +16,8 @@
             <p class="body__error" style="color:red">{{ $errors->first('question.body') }}</p>
         </div>
         <input type="submit" value="保存"/>
-        <div class="footer">
-            <a href="/" class="underline">戻る</a>
-        </div>
     </form>
+    <div class="footer">
+        <a href="/" class="underline">戻る</a>
+    </div>
 </x-app-layout>
