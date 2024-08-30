@@ -5,6 +5,9 @@
     <div class="body">
         <p>{{ $question->body }}</h2>
     </div>
+    <div>
+        <a href="/questions/{{ $question->id }}/answers/create" class="underline">回答する</a>
+    </div>
     <div class="edit">
         <a href="/questions/{{ $question->id }}/edit" class="underline">編集</a>
     </div>
@@ -15,7 +18,7 @@
     </form>
     <div class="answers">
         @foreach ($answers as $answer)
-            <div class="question">
+            <div class="answer">
                 <p>{{ $answer->comment }}</p>
             </div>
         @endforeach

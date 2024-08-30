@@ -189,6 +189,7 @@ return [
     'attributes' => [
         'question.title' => '質問タイトル',
         'question.body' => '質問内容詳細',
+        'answer.comment' => '回答',
     ],
 
 ];
