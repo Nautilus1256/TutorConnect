@@ -21,6 +21,14 @@
             <div class="answer">
                 <p>{{ $answer->comment }}</p>
             </div>
+            <div class="edit">
+                <a href="/questions/{{ $question->id }}/answers/{{ $answer->id }}/edit" class="underline">編集</a>
+            </div>
+            <form action="/questions/{{ $question->id }}/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="deleteAnswer({{ $answer->id }})">削除</button>
+            </form>
         @endforeach
     </div>
     <div class='paginate underline'>
@@ -32,6 +40,13 @@
     
     <script>
         function deleteQuestion(id) {
+            'use strict'
+            
+            if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                document.getElementById(`form_${id}`).submit();
+            }
+        }
+        function deleteAnswer(id) {
             'use strict'
             
             if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
