@@ -38,6 +38,9 @@ Route::controller(QuestionController::class)->group(function(){
 Route::controller(AnswerController::class)->middleware(['auth'])->group(function(){
     Route::get('/questions/{question}/answers/create', 'create')->name('answer_create');
     Route::post('/answers', 'store')->name('answer_store');
+    Route::get('/questions/{question}/answers/{answer}/edit','edit')->name('answer_edit');
+    Route::put('/questions/{question}/answers/{answer}', 'update')->name('answer_update');
+    Route::delete('questions/{question}/answers/{answer}', 'delete')->name('answer_delete');
 });
 
 Route::middleware('auth')->group(function () {
