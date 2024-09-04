@@ -27,6 +27,11 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
     
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+    
     public function getPaginateByLimit(int $limit_count = 2)
     {
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);

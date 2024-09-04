@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
 use App\Models\Question;
+use App\Models\Category;
 use App\Models\Answer;
 
 class QuestionController extends Controller
@@ -21,13 +22,16 @@ class QuestionController extends Controller
     
     public function create()
     {
-        return view('questions.create');
+        $categories = Category::all();
+        return view('questions.create')->with(['categories' => $categories]);
     }
     
     public function store(QuestionRequest $request, Question $question)
     {
-        $input = $request['question'];
-        $question->fill($input)->save();
+        $input_question = $request['question'];
+        $input_categories = $request->categories_array;
+        $question->fill($input_question)->save();
+        $question->categories()->attach($input_categories);
         return redirect('/questions/' . $question->id);
     }
     

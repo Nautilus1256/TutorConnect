@@ -1,9 +1,15 @@
 <x-app-layout>
     <div class="title">
-        <h2>{{ $question->title }}</h2>
+        <h2>質問タイトル：{{ $question->title }}</h2>
     </div>
     <div class="body">
-        <p>{{ $question->body }}</h2>
+        <h2>質問詳細：{{ $question->body }}</h2>
+    </div>
+    <div class="categories">
+        <h2>カテゴリ</h2>
+        @foreach($question->categories as $category)
+            {{ $category->name }}
+        @endforeach
     </div>
     <div>
         <a href="/questions/{{ $question->id }}/answers/create" class="underline">回答する</a>
