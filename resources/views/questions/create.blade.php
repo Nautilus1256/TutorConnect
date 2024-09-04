@@ -15,6 +15,17 @@
             <textarea name="question[body]" placeholder="質問内容詳細">{{ old('question.body') }}</textarea>
             <p class="body__error" style="color:red">{{ $errors->first('question.body') }}</p>
         </div>
+        <div>
+            <h2>カテゴリー</h2>
+            @foreach($categories as $category)
+                <label>
+                {{-- valueを'$subjectのid'に、nameを'配列名[]'に --}}
+                    <input type="checkbox" value="{{ $category->id }}" name="categories_array[]">
+                        {{$category->name}}
+                    </input>
+                </label>
+            @endforeach
+        </div>
         <input type="submit" value="保存"/>
     </form>
     <div class="footer">
