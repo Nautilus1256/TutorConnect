@@ -37,7 +37,9 @@ class QuestionController extends Controller
     
     public function edit(Question $question)
     {
-        return view('questions/edit')->with(['question' => $question]);
+        $categories = Category::all();
+        $selected_categories = $question->categories->pluck('id')->toArray();
+        return view('questions/edit')->with(['question' => $question, 'categories' => $categories, 'selected_categories' => $selected_categories]);
     }
     
     public function update(QuestionRequest $request, Question $question)

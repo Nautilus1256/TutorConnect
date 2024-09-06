@@ -19,7 +19,6 @@
             <h2>カテゴリー</h2>
             @foreach($categories as $category)
                 <label>
-                {{-- valueを'$subjectのid'に、nameを'配列名[]'に --}}
                     <input type="checkbox" value="{{ $category->id }}" name="categories_array[]" {{ in_array($category->id, old('categories_array', [])) ? 'checked' : '' }}>
                         {{$category->name}}
                     </input>
