@@ -11,6 +11,11 @@
             {{ $category->name }}
         @endforeach
     </div>
+    @foreach ($images as $image)
+        <div>
+            <img src="{{ $image->image_url }}" alt="画像が読み込めません。">
+        </div>
+    @endforeach
     <div>
         <a href="/questions/{{ $question->id }}/answers/create" class="underline">回答する</a>
     </div>

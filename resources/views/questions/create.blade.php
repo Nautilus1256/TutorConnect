@@ -1,6 +1,6 @@
 <x-app-layout>
     <h1>Tutor Connect</h1>
-    <form action="/questions" method="POST">
+    <form action="/questions" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="user_id">
             <input type="hidden" name="question[user_id]" value="{{ Auth::user()->id }}"/>
@@ -19,12 +19,14 @@
             <h2>カテゴリー</h2>
             @foreach($categories as $category)
                 <label>
-                {{-- valueを'$subjectのid'に、nameを'配列名[]'に --}}
                     <input type="checkbox" value="{{ $category->id }}" name="categories_array[]" {{ in_array($category->id, old('categories_array', [])) ? 'checked' : '' }}>
                         {{$category->name}}
                     </input>
                 </label>
             @endforeach
+        </div>
+        <div class="images">
+            <input type="file" name="images[]" multiple/>
         </div>
         <input type="submit" value="保存"/>
     </form>

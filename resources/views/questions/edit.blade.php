@@ -16,6 +16,16 @@
             <textarea name="question[body]" placeholder="質問内容詳細">{{ $question->body }}</textarea>
             <p class="body__error" style="color:red">{{ $errors->first('question.body') }}</p>
         </div>
+        <div>
+            <h2>カテゴリー</h2>
+            @foreach($categories as $category)
+                <label>
+                    <input type="checkbox" value="{{ $category->id }}" name="categories_array[]" {{ in_array($category->id, $selected_categories) ? 'checked' : '' }}>
+                        {{$category->name}}
+                    </input>
+                </label>
+            @endforeach
+        </div>
         <input type="submit" value="保存"/>
         <div class="footer">
             <a href="/questions/{{ $question->id }}" class="underline">戻る</a>
