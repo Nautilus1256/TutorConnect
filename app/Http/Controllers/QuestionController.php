@@ -29,23 +29,18 @@ class QuestionController extends Controller
     
     public function store(QuestionRequest $request, Question $question)
     {
-        $image_urls = [];
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
-                $image_urls[] = $image_url;
-            }
-        }
-
         $input_question = $request['question'];
         $input_categories = $request->categories_array;
         $question->fill($input_question)->save();
-        foreach ($image_urls as $url) {
-            $question->images()->create([
-                'image_url' => $url,
-            ]);
-        }
         $question->categories()->attach($input_categories);
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
+                $question->images()->create([
+                    'image_url' => $image_url,
+                ]);
+            }
+        }
         return redirect('/questions/' . $question->id);
     }
     
