@@ -1,6 +1,6 @@
 <x-app-layout>
     <h1>Tutor Connect</h1>
-    <form action="/questions" method="POST">
+    <form action="/questions" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="user_id">
             <input type="hidden" name="question[user_id]" value="{{ Auth::user()->id }}"/>
@@ -24,6 +24,9 @@
                     </input>
                 </label>
             @endforeach
+        </div>
+        <div class="images">
+            <input type="file" name="images[]" multiple/>
         </div>
         <input type="submit" value="保存"/>
     </form>

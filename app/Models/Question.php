@@ -27,12 +27,17 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
     
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+    
     public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
     
-    public function getPaginateByLimit(int $limit_count = 2)
+    public function getPaginateByLimit(int $limit_count = 4)
     {
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
