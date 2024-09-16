@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Answers::class);
     }
+    
+    public function user_likes()
+    {
+        return $this->belongsToMany(Question::class, 'question_likes', 'user_id', 'question_id');
+    }
 }

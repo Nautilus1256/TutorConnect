@@ -16,6 +16,23 @@
         
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/ef224dbb5e.js" crossorigin="anonymous"></script>
+        <style>
+            .liked{
+                color:orangered;
+                transition:.2s;
+            }
+            .flexbox{
+                align-items: center;
+                display: flex;
+            }
+            .count-num{
+                font-size: 20px;
+                margin-left: 10px;
+            }
+            .fa-heart{
+                font-size: 30px;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
