@@ -11,6 +11,9 @@
                 <h2 class='title'>
                     <a href="/questions/{{ $question->id }}" class="underline">{{ $question->title }}</a>
                 </h2>
+                <div class='heart'>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
             </div>
         @endforeach
     </div>
