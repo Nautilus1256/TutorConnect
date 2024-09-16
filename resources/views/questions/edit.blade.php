@@ -1,6 +1,6 @@
 <x-app-layout>
     <h1>編集画面</h1>
-    <form action="/questions/{{ $question->id }}" method="POST">
+    <form action="/questions/{{ $question->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="user_name">
@@ -25,6 +25,9 @@
                     </input>
                 </label>
             @endforeach
+        </div>
+        <div class="images">
+            <input type="file" name="images[]" multiple/>
         </div>
         <input type="submit" value="保存"/>
         <div class="footer">

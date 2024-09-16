@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -42,6 +43,8 @@ Route::controller(AnswerController::class)->middleware(['auth'])->group(function
     Route::put('/questions/{question}/answers/{answer}', 'update')->name('answer_update');
     Route::delete('questions/{question}/answers/{answer}', 'delete')->name('answer_delete');
 });
+
+Route::post('/question/like', [LikeController::class, 'likeQuestion']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
