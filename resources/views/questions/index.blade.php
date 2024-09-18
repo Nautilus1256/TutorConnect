@@ -1,56 +1,59 @@
 <x-app-layout>
     <div class='flex'>
-        <div class='w-3-10 border-r border-black'>
+        <div class='w-2-10 border-r border-black'>
             左30%
         </div>
-        <div class='w-7-10'>
-            <div class='questions block mx-20'>
+        <div class='w-8-10'>
+            <div class='questions block mx-28 mt-20'>
                 @foreach ($questions as $question)
                     <div class='question flex flex-col py-4'>
-                        <div class='question-content flex justify-between border-2 rounded-2xl border-black p-4 h-20 max-w-full overflow-hidden box-content'>
-                            @if($question->images->isNotEmpty())
-                                <div class='question-letters-with-image'>
-                                    <h2 class='question-title'>
-                                        <a href='/questions/{{ $question->id }}' class='underline'>{{ $question->title }}</a>
-                                    </h2>
-                                    <p class='question-body truncate'>
-                                        {{ $question->body }}
-                                    </p>
-                                    <div class='question-category flex items-center justify-start'>
-                                        @if($question->categories->isNotEmpty())
-                                            <p>カテゴリー：</p>
-                                            @foreach ($question->categories as $category)
-                                                <p>{{ $category->name }}</p>
-                                            @endforeach
-                                        @else
-                                            <p>カテゴリー：なし</p>
-                                        @endif
+                        <a href='/questions/{{ $question->id }}' class='block'>
+                            <div class='question-content flex justify-between border-2 rounded-2xl border-black p-4 h-20 max-w-full overflow-hidden box-content'>
+                                @if($question->images->isNotEmpty())
+                                    <div class='question-letters-with-image'>
+                                        <h2 class='question-title text-2xl font-bold truncate'>
+                                            {{ $question->title }}
+                                        </h2>
+                                        <p class='question-body truncate'>
+                                            {{ $question->body }}
+                                        </p>
+                                        <div class='question-category flex items-center justify-start text-xs mt-2'>
+                                            @if($question->categories->isNotEmpty())
+                                                <p>カテゴリー：</p>
+                                                @foreach ($question->categories as $category)
+                                                    <p>{{ $category->name }}</p>
+                                                @endforeach
+                                            @else
+                                                <p>カテゴリー：なし</p>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class='question-image'>
-                                    <img src='{{ $question->images->first()->image_url }}' alt='画像' class='block box-border w-20 h-20 ml-5 border rounded-lg border-gray-400'>
-                                </div>
-                            @else
-                                <div class='question-letters-without-image'>
-                                    <h2 class='title'>
-                                        <a href='/questions/{{ $question->id }}' class='underline'>{{ $question->title }}</a>
-                                    </h2>
-                                    <p class='question-body truncate'>
-                                        {{ $question->body }}
-                                    </p>
-                                    <div class='question-category flex items-center justify-start'>
-                                        @if($question->categories->isNotEmpty())
-                                            <p>カテゴリー：</p>
-                                            @foreach ($question->categories as $category)
-                                                <p>{{ $category->name }}</p>
-                                            @endforeach
-                                        @else
-                                            <p>カテゴリー：なし</p>
-                                        @endif
+                                    <div class='question-image'>
+                                        <img src='{{ $question->images->first()->image_url }}' alt='画像' class='block box-border w-20 h-20 ml-5 border rounded-lg border-gray-400'>
                                     </div>
-                                </div>
-                            @endif
-                        </div>
+                                @else
+                                    <div class='question-letters-without-image'>
+                                        <h2 class='question-title text-2xl font-bold truncate'>
+                                            {{ $question->title }}
+                                        </h2>
+                                        <p class='question-body truncate'>
+                                            {{ $question->body }}
+                                        </p>
+                                        <div class='question-category flex items-center justify-start text-xs mt-2'>
+                                            @if($question->categories->isNotEmpty())
+                                                <p>カテゴリー：</p>
+                                                @foreach ($question->categories as $category)
+                                                    <p>{{ $category->name }}</p>
+                                                @endforeach
+                                            @else
+                                                <p>カテゴリー：なし</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </a>
+                        
                         <div class='question-info flex justify-end'>
                             <div class='question-status flex items-center'>
                                 <p>{{ $question->status }}</p>
@@ -85,15 +88,11 @@
                                 <p class='ml-2'>{{$question->created_at->format('Y/m/d')}}</p>
                             </div>
                         </div>
-                        
-                        
-                        
-                        
                     </div>
                 @endforeach
             </div>
             <div class='paginate underline'>
-                {{ $questions->links() }}
+                {{ $questions->links('vendor.pagination.mypagination') }}
             </div>
             <div class='post-btn'>
                 <a href='/questions/create'>
