@@ -6,10 +6,35 @@
     align-items: center;
     display: flex;
 }
-.count-num{
-    font-size: 20px;
-    margin-left: 10px;
+
+.w-3-10 {
+    flex-basis: 30%;
 }
-.fa-heart{
-    font-size: 30px;
+
+.w-7-10 {
+    flex-basis: 70%;
+    max-width: 70%;
+}
+.post-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: lightgrey;
+    cursor: pointer;
+    z-index: 10;
+}
+.post-icon {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 72px;
+}
+.question-letters-with-image {
+    width: calc(100% - 100px);
+}
+.question-letters-without-image {
+    width: 100%;
 }
