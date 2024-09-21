@@ -1,9 +1,30 @@
 <x-app-layout>
     <div class='flex'>
-        <div class='w-2-10 border-r border-black'>
-            左30%
+        <div class='w-2-10 border-r border-black leftside-color'>
+            <form action='/search/word' method='GET' class='flex justify-center border-2 border-gray-600 h-12 mx-auto rounded w-52 mt-10'>
+                <input type='text' name='keyword' placeholder='キーワードを入力' class='word-search-area w-40 px-3 bg-transparent'>
+                <button type='submit' class='w-12 bg-transparent text-gray-600 text-lg cursor-pointer'><i class='fa-solid fa-magnifying-glass'></i></button>
+            </form>
+            
+            <form action='/search/category' method='GET' class='flex flex-col mx-auto w-52 mt-10'>
+                @foreach($category_types as $category_type)
+                    <div class='text-xl'>{{ $category_type->name }}</div>
+                    <div class='ml-5'>
+                        @foreach($category_type->categories as $category)
+                            <div>
+                                <input type='checkbox' name='categories[]' value='{{ $category->id }}'>
+                                <label>
+                                    {{ $category->name }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+                <button type='submit'>検索</button>
+            </form>
+
         </div>
-        <div class='w-8-10'>
+        <div class='w-8-10 bg-white'>
             <div class='questions block mx-28 mt-20'>
                 @foreach ($questions as $question)
                     <div class='question flex flex-col py-4'>
@@ -90,9 +111,9 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
-            <div class='paginate underline'>
-                {{ $questions->links('vendor.pagination.mypagination') }}
+                <div class='paginate'>
+                    {{ $questions->links('vendor.pagination.mypagination') }}
+                </div>
             </div>
             <div class='post-btn'>
                 <a href='/questions/create'>
