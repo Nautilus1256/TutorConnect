@@ -32,6 +32,8 @@ Route::controller(QuestionController::class)->group(function(){
     Route::get('/questions/{question}/edit','edit')->name('question_edit')->middleware(['auth']);
     Route::put('/questions/{question}', 'update')->name('question_update')->middleware(['auth']);
     Route::delete('/questions/{question}', 'delete')->name('question_delete')->middleware(['auth']);
+    Route::get('/search/word', 'wordSearch')->name('question_word_search');
+    Route::get('/search/category', 'categorySearch')->name('question_category_search');
 });
 
 Route::controller(AnswerController::class)->middleware(['auth'])->group(function(){

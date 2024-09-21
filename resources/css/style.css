@@ -66,3 +66,15 @@
   background-color: #ddd;
   border-radius: 5px;
 }
+
+.word-search-area {
+    border: none;
+}
+input[type='text']:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.leftside-color {
+    background-color: #FFEDB3;
+}
