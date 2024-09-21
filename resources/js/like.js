@@ -5,8 +5,10 @@ likeBtns.forEach(likeBtn => {
     likeBtn.addEventListener('click',async(e)=>{
         //クリックされた要素を取得しています。
         const clickedEl = e.target;
-        //クリックされた要素にlikedというクラスがあれば削除し、なければ付与します。これにより星の色の切り替えができます。      
+        //クリックされた要素にlikedというクラスがあれば削除し、なければ付与します。これにより星の色の切り替えができます。 
         clickedEl.classList.toggle('liked');
+        clickedEl.classList.toggle('fa-solid');
+        clickedEl.classList.toggle('fa-regular');
         //記事のidを取得しています。
         const questionId = e.target.id;
         //fetchメソッドを利用し、バックエンドと通信します。非同期処理のため、画面がかくついたり、真っ白になることはありません。

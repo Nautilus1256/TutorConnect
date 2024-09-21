@@ -55,8 +55,18 @@ class QuestionController extends Controller
     
     public function update(QuestionRequest $request, Question $question)
     {
-        $input = $request['question'];
-        $question->fill($input)->save();
+        $input_question = $request['question'];
+        $input_categories = $request->categories_array;
+        $question->fill($input_question)->save();
+        $question->categories()->sync($input_categories);
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
+                $question->images()->create([
+                    'image_url' => $image_url,
+                ]);
+            }
+        }
         return redirect('/questions/' . $question->id);
     }
     

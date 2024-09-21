@@ -14,10 +14,7 @@ class CategoryTypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('category_types')->insert([
-            'name' => '教科',
-        ]);
-        DB::table('category_types')->insert([
-            'name' => '学年',
+            'name' => '環境',
         ]);
     }
 }
