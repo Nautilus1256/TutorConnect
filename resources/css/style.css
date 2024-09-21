@@ -22,7 +22,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background-color: lightgrey;
+    background-color: #F1AF2D;
     cursor: pointer;
     z-index: 10;
 }
@@ -31,6 +31,7 @@
     top: 24px;
     left: 24px;
     font-size: 72px;
+    color: white;
 }
 .question-letters-with-image {
     width: calc(100% - 100px);
@@ -69,12 +70,40 @@
 
 .word-search-area {
     border: none;
+    width: calc(100% - 48px);
 }
 input[type='text']:focus {
     border: none;
     outline: none;
     box-shadow: none;
 }
-.leftside-color {
-    background-color: #FFEDB3;
+.nav-color {
+    background-color: #F1AF2D;
+}
+.leftside {
+    background-color: white;
+}
+.my-body-font {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+}
+.question-body {
+    color: #707070;
+}
+.question-content {
+    box-shadow: 0 0 8px #F4C15C;
+    background-color: white;
+}
+.category-color {
+    color: #707070;
+}
+.category-type {
+    background-color: #F1AF2D;
+}
+.category-search-btn {
+    border: 2px solid #F1AF2D;
+}
+.right-area {
+    background-color: #FFE682;
 }
