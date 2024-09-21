@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Models\QuestionLike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LikeController extends Controller
 {
