@@ -11,7 +11,7 @@ class AnswerController extends Controller
 {
     public function create(Question $question)
     {
-        return view('answers.create')->with(['question' => $question]);
+        return view('answers.create')->with(['question' => $question, 'images' => $question->images()->get()]);
     }
     
     public function store(AnswerRequest $request, Answer $answer)

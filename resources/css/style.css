@@ -97,9 +97,9 @@ input[type='text']:focus {
 .question-body {
     color: #707070;
 }
-.question-content {
+.question-content,
+.answer-content {
     box-shadow: 0 0 8px #F4C15C;
-    background-color: white;
 }
 .category-color {
     color: #707070;
@@ -131,7 +131,39 @@ input[type='text']:focus {
     color: white;
     font-weight: bold;    
 }
-.image-size {
+.question-show-image {
     width: 400px;
     height: 400px;
+}
+.reply-icon {
+    font-size: 48px;
+    line-height: 1;
+    color: #F1AF2D;
+}
+.answer-create-image {
+    width: 200px;
+    height: 200px;
+}
+/*answers.create*/
+.h-full-minus-160px {
+    height: calc(100vh - 160px);
+}
+.h-full-minus-24px {
+    height: calc(100% - 24px);
+}
+.h-full-minus-64px {
+    height: calc(100% - 64px);
+}
+.h-full-minus-94px {
+    height: calc(100% - 94px);
+}
+.answer-btn {
+    background-color: #F1AF2D;
+}
+.answer-create-return-btn {
+    color: #F1AF2D;
+    border: 1px solid #F1AF2D;
+}
+.answer-create-background {
+    background-color: #FFE682;
 }

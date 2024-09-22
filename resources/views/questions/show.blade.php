@@ -20,7 +20,7 @@
                 </a>
             </div>
         </div>
-        <div class='rounded-2xl bg-white p-8'>
+        <div class='rounded-2xl bg-white p-8 question-content'>
             <div class="title text-3xl font-bold">
                 <h2>{{ $question->title }}</h2>
             </div>
@@ -38,7 +38,7 @@
             <div class='images flex items-center justify-around flex-wrap'>
                 @foreach ($images as $image)
                     <div>
-                        <img src="{{ $image->image_url }}" alt="画像が読み込めません。" class='object-contain image-size'>
+                        <img src="{{ $image->image_url }}" alt="画像が読み込めません。" class='object-contain question-show-image'>
                     </div>
                 @endforeach
             </div>
@@ -85,30 +85,36 @@
             </div>
         </div>
 
-        <div>
-            <a href="/questions/{{ $question->id }}/answers/create" class="underline">回答する</a>
-        </div>
-        <div class="edit">
-            <a href="/questions/{{ $question->id }}/edit" class="underline">編集</a>
-        </div>
-        <form action="/questions/{{ $question->id }}" id="form_{{ $question->id }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="button" onclick="deleteQuestion({{ $question->id }})">削除</button>
-        </form>
         <div class="answers">
             @foreach ($answers as $answer)
-                <div class="answer">
-                    <p>{{ $answer->comment }}</p>
+                <div class='flex justify-between items-end mt-8'>
+                    <div class='reply-icon'>
+                        <i class="fa-solid fa-reply"></i>
+                    </div>
+                    <div class='flex justify-end'>
+                        <form action="/questions/{{ $question->id }}/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="deleteAnswer({{ $answer->id }})">
+                                <div class='question-delete flex items-center ml-4'>
+                                    <i class='fa-solid fa-trash-can'></i>
+                                    <p class='ml-2'>削除</p>
+                                </div>
+                            </button>
+                        </form>
+                        <div class="edit">
+                            <a href="/questions/{{ $question->id }}/answers/{{ $answer->id }}/edit" class="inline-block">
+                                <div class='question-edit flex items-center ml-4'>
+                                    <i class='fa-solid fa-pen'></i>
+                                    <p class='ml-2'>編集</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="edit">
-                    <a href="/questions/{{ $question->id }}/answers/{{ $answer->id }}/edit" class="underline">編集</a>
+                <div class='answer-content rounded-2xl bg-white p-8 text-xl flex items-center'>
+                    <h2>{{ $answer->comment }}</h2>
                 </div>
-                <form action="/questions/{{ $question->id }}/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" onclick="deleteAnswer({{ $answer->id }})">削除</button>
-                </form>
             @endforeach
         </div>
         <div class='paginate underline'>
@@ -116,6 +122,15 @@
         </div>
         <div class='footer'>
             <a href="/" class='underline'>戻る</a>
+        </div>
+        
+        <div class='post-btn'>
+            <a href="/questions/{{ $question->id }}/answers/create" class="underline">
+                <!--<i class="fa-solid fa-comment-dots post-icon"></i>-->
+                <!--<i class="fa-regular fa-message post-icon"></i>-->
+                <!--<i class="fa-solid fa-message post-icon"></i>-->
+                <i class="fa-solid fa-reply post-icon"></i>
+            </a>
         </div>
         
         <script>
