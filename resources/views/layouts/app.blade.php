@@ -22,7 +22,7 @@
         <script src="https://kit.fontawesome.com/ef224dbb5e.js" crossorigin="anonymous"></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-white mx-4">
+        <div class="min-h-screen overflow-hidden bg-white mx-4">
             @include('layouts.mynavigation')
 
             <!-- Page Heading -->

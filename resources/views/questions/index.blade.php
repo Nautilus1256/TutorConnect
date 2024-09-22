@@ -41,7 +41,7 @@
                     @foreach ($questions as $question)
                         <div class='question flex flex-col py-4'>
                             <a href='/questions/{{ $question->id }}' class='block'>
-                                <div class='question-content flex justify-between border rounded-2xl border-gray-200 p-8 h-20 max-w-full overflow-hidden box-content'>
+                                <div class='question-content bg-white flex justify-between rounded-2xl p-8 h-20 max-w-full overflow-hidden box-content'>
                                     @if($question->images->isNotEmpty())
                                         <div class='question-letters-with-image'>
                                             <h2 class='question-title text-2xl font-bold truncate'>
