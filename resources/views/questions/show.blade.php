@@ -1,24 +1,29 @@
 <x-app-layout>
     <div class='my-8 rounded-2xl px-16 py-8 question-show-area'>
         <div class='flex justify-end'>
-            <form action="/questions/{{ $question->id }}" id="form_{{ $question->id }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="button" onclick="deleteQuestion({{ $question->id }})">
-                    <div class='question-delete flex items-center ml-4'>
-                        <i class='fa-solid fa-trash-can'></i>
-                        <p class='ml-2'>削除</p>
-                    </div>
-                </button>
-            </form>
-            <div class="edit">
-                <a href="/questions/{{ $question->id }}/edit" class="inline-block">
-                    <div class='question-edit flex items-center ml-4'>
-                        <i class='fa-solid fa-pen'></i>
-                        <p class='ml-2'>編集</p>
-                    </div>
-                </a>
-            </div>
+            @can('update', $question)
+                <form action="/questions/{{ $question->id }}" id="form_{{ $question->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deleteQuestion({{ $question->id }})">
+                        <div class='question-delete flex items-center ml-4'>
+                            <i class='fa-solid fa-trash-can'></i>
+                            <p class='ml-2'>削除</p>
+                        </div>
+                    </button>
+                </form>
+            @endcan
+            @can('update', $question)
+                <div class="edit">
+                    <a href="/questions/{{ $question->id }}/edit" class="inline-block">
+                        <div class='question-edit flex items-center ml-4'>
+                            <i class='fa-solid fa-pen'></i>
+                            <p class='ml-2'>編集</p>
+                        </div>
+                    </a>
+                </div>
+            @endcan
+            
         </div>
         <div class='rounded-2xl bg-white p-8 question-content'>
             <div class="title text-3xl font-bold">
@@ -92,24 +97,28 @@
                         <i class="fa-solid fa-reply"></i>
                     </div>
                     <div class='flex justify-end'>
-                        <form action="/questions/{{ $question->id }}/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deleteAnswer({{ $answer->id }})">
-                                <div class='question-delete flex items-center ml-4'>
-                                    <i class='fa-solid fa-trash-can'></i>
-                                    <p class='ml-2'>削除</p>
-                                </div>
-                            </button>
-                        </form>
-                        <div class="edit">
-                            <a href="/questions/{{ $question->id }}/answers/{{ $answer->id }}/edit" class="inline-block">
-                                <div class='question-edit flex items-center ml-4'>
-                                    <i class='fa-solid fa-pen'></i>
-                                    <p class='ml-2'>編集</p>
-                                </div>
-                            </a>
-                        </div>
+                        @can('delete', $answer)
+                            <form action="/questions/{{ $question->id }}/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" onclick="deleteAnswer({{ $answer->id }})">
+                                    <div class='question-delete flex items-center ml-4'>
+                                        <i class='fa-solid fa-trash-can'></i>
+                                        <p class='ml-2'>削除</p>
+                                    </div>
+                                </button>
+                            </form>
+                        @endcan
+                        @can('update', $answer)
+                            <div class="edit">
+                                <a href="/questions/{{ $question->id }}/answers/{{ $answer->id }}/edit" class="inline-block">
+                                    <div class='question-edit flex items-center ml-4'>
+                                        <i class='fa-solid fa-pen'></i>
+                                        <p class='ml-2'>編集</p>
+                                    </div>
+                                </a>
+                            </div>
+                        @endcan
                     </div>
                 </div>
                 <div class='answer-content rounded-2xl bg-white p-8 text-xl flex items-center'>

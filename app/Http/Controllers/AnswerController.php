@@ -23,11 +23,13 @@ class AnswerController extends Controller
     
     public function edit(Question $question, Answer $answer)
     {
+        $this->authorize('update', $answer);
         return view('answers.edit')->with(['question' => $question, 'answer' => $answer]);
     }
     
     public function update(AnswerRequest $request, Question $question, Answer $answer)
     {
+        $this->authorize('update', $answer);
         $input = $request['answer'];
         $answer->fill($input)->save();
         return redirect('/questions/' . $answer->question_id);
@@ -35,6 +37,7 @@ class AnswerController extends Controller
     
     public function delete(Question $question, Answer $answer)
     {
+        $this->authorize('delete', $answer);
         $answer->delete();
         return redirect('/questions/' . $answer->question_id);
     }
