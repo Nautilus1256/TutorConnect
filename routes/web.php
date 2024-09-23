@@ -41,7 +41,8 @@ Route::controller(AnswerController::class)->middleware(['auth'])->group(function
     Route::post('/answers', 'store')->name('answer_store');
     Route::get('/questions/{question}/answers/{answer}/edit','edit')->name('answer_edit');
     Route::put('/questions/{question}/answers/{answer}', 'update')->name('answer_update');
-    Route::delete('questions/{question}/answers/{answer}', 'delete')->name('answer_delete');
+    Route::delete('/questions/{question}/answers/{answer}', 'delete')->name('answer_delete');
+    Route::post('/questions/{question}/answers/{answer}/best', 'selectBestAnswer')->name('answer_best');
 });
 
 Route::post('/question/like', [LikeController::class, 'likeQuestion']);

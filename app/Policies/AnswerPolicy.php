@@ -63,4 +63,9 @@ class AnswerPolicy
     {
         //
     }
+    
+    public function selectBestAnswer(User $user, Answer $answer): bool
+    {
+        return $user->id === $answer->question->user_id && $answer->question->status === '未解決';
+    }
 }

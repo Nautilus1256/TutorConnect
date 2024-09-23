@@ -41,4 +41,14 @@ class AnswerController extends Controller
         $answer->delete();
         return redirect('/questions/' . $answer->question_id);
     }
+    
+    public function selectBestAnswer(Question $question, Answer $answer)
+    {
+        $this->authorize('selectBestAnswer', $answer);
+        $answer->best_answer = true;
+        $answer->save();
+        $answer->question->status = '解決済み';
+        $answer->question->save();
+        return redirect('/questions/' . $answer->question_id);
+    }
 }

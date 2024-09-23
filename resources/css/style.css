@@ -167,3 +167,6 @@ input[type='text']:focus {
 .answer-create-background {
     background-color: #FFE682;
 }
+.best-answer {
+    color: #F1AF2D;
+}
