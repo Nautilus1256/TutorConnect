@@ -121,9 +121,22 @@
                         @endcan
                     </div>
                 </div>
-                <div class='answer-content rounded-2xl bg-white p-8 text-xl flex items-center'>
-                    <h2>{{ $answer->comment }}</h2>
+                <div class='answer-content flex flex-col gap-4 rounded-2xl bg-white p-8'>
+                    @if($answer->best_answer)
+                        <div class='flex items-center gap-2 text-3xl font-bold best-answer'>
+                            <i class="fa-solid fa-crown"></i>
+                            <p>ベストアンサー</p>
+                        </div>
+                    @endif
+                    <h2 class='flex items-center text-xl'>{{ $answer->comment }}</h2>
                 </div>
+                @can('selectBestAnswer', $answer)
+                    <form action="/questions/{{ $question->id }}/answers/{{ $answer->id }}/best" method="POST" class='flex items-center justify-end pt-4'>
+                        @csrf
+                        <i class="fa-solid fa-crown best-answer text-2xl"></i>
+                        <button type="submit" class='text-xl font-bold'>ベストアンサーに選ぶ</button>
+                    </form>
+                @endcan
             @endforeach
         </div>
         <div class='paginate underline'>
