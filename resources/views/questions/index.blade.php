@@ -10,11 +10,11 @@
                 <form action='/search/category' method='GET' class='flex flex-col mx-auto w-52 mt-4'>
                     @foreach($category_types as $category_type)
                         <div class='category-type text-xl p-4 text-white rounded-lg font-bold mt-4 text-center mx-4'>
-                            @if($category_type->id == 1)
+                            @if($category_type->name == '教科')
                                 <i class="fa-solid fa-book"></i>
-                            @elseif($category_type->id == 2)
+                            @elseif($category_type->name == '学年')
                                 <i class="fa-solid fa-graduation-cap"></i>
-                            @elseif($category_type->id == 3)
+                            @elseif($category_type->name == '環境')
                                 <i class="fa-solid fa-house"></i>
                             @endif
                             {{ $category_type->name }}
@@ -133,7 +133,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class='post-btn'>
                 <a href='/questions/create'>
                     <i class='fa-regular fa-pen-to-square post-icon'></i>

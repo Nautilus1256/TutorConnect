@@ -48,6 +48,7 @@ class QuestionController extends Controller
     
     public function edit(Question $question)
     {
+        $this->authorize('update', $question);
         $categories = Category::all();
         $selected_categories = $question->categories->pluck('id')->toArray();
         return view('questions.edit')->with(['question' => $question, 'categories' => $categories, 'selected_categories' => $selected_categories]);
@@ -55,6 +56,7 @@ class QuestionController extends Controller
     
     public function update(QuestionRequest $request, Question $question)
     {
+        $this->authorize('update', $question);
         $input_question = $request['question'];
         $input_categories = $request->categories_array;
         $question->fill($input_question)->save();
@@ -72,6 +74,7 @@ class QuestionController extends Controller
     
     public function delete(Question $question)
     {
+        $this->authorize('delete', $question);
         $question->delete();
         return redirect('/');
     }
