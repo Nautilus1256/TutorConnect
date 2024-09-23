@@ -25,14 +25,14 @@ class QuestionController extends Controller
     
     public function create()
     {
-        $categories = Category::all();
-        return view('questions.create')->with(['categories' => $categories]);
+        $categoryTypes = CategoryType::with('categories')->get();
+        return view('questions.create')->with(['category_types' => $categoryTypes]);
     }
     
     public function store(QuestionRequest $request, Question $question)
     {
         $input_question = $request['question'];
-        $input_categories = $request->categories_array;
+        $input_categories = $request->categories;
         $question->fill($input_question)->save();
         $question->categories()->attach($input_categories);
         if ($request->hasFile('images')) {

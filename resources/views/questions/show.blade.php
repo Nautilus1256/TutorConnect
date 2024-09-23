@@ -5,7 +5,7 @@
                 <form action="/questions/{{ $question->id }}" id="form_{{ $question->id }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="button" onclick="deleteQuestion({{ $question->id }})">
+                    <button type="button" onclick="deleteConfirmation({{ $question->id }})">
                         <div class='question-delete flex items-center ml-4'>
                             <i class='fa-solid fa-trash-can'></i>
                             <p class='ml-2'>削除</p>
@@ -89,6 +89,11 @@
                 <p class='ml-2'>{{$question->created_at->format('Y/m/d')}}</p>
             </div>
         </div>
+        <div class='flex items-center justify-around py-4'>
+            <a href="/questions/{{ $question->id }}/answers/create" class='inline-block'>
+                <p class='text-2xl px-24 py-4 bg-white rounded-lg font-bold text-center box-border answer-create-return-btn'>返信</p>
+            </a>
+        </div>
 
         <div class="answers">
             @foreach ($answers as $answer)
@@ -101,7 +106,7 @@
                             <form action="/questions/{{ $question->id }}/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="deleteAnswer({{ $answer->id }})">
+                                <button type="button" onclick="deleteConfirmation({{ $answer->id }})">
                                     <div class='question-delete flex items-center ml-4'>
                                         <i class='fa-solid fa-trash-can'></i>
                                         <p class='ml-2'>削除</p>
@@ -139,37 +144,11 @@
                 @endcan
             @endforeach
         </div>
-        <div class='paginate underline'>
-            {{ $answers->links() }}
+        <div class='paginate mt-4'>
+            {{ $answers->links('vendor.pagination.mypagination') }}
         </div>
-        <div class='footer'>
-            <a href="/" class='underline'>戻る</a>
+        <div class='flex items-center justify-around pt-16'>
+            <a href="/" class='underline text-2xl font-bold question-show-return-btn'>ホームに戻る</a>
         </div>
-        
-        <div class='post-btn'>
-            <a href="/questions/{{ $question->id }}/answers/create" class="underline">
-                <!--<i class="fa-solid fa-comment-dots post-icon"></i>-->
-                <!--<i class="fa-regular fa-message post-icon"></i>-->
-                <!--<i class="fa-solid fa-message post-icon"></i>-->
-                <i class="fa-solid fa-reply post-icon"></i>
-            </a>
-        </div>
-        
-        <script>
-            function deleteQuestion(id) {
-                'use strict'
-                
-                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                    document.getElementById(`form_${id}`).submit();
-                }
-            }
-            function deleteAnswer(id) {
-                'use strict'
-                
-                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                    document.getElementById(`form_${id}`).submit();
-                }
-            }
-        </script>
     </div>
 </x-app-layout>
