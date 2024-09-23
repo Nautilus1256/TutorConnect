@@ -27,7 +27,7 @@ class Answer extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function scopeGetPaginateByLimit($query, int $limit_count = 2)
+    public function scopeGetPaginateByLimit($query, int $limit_count = 3)
     {
         return $query->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }

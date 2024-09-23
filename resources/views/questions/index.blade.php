@@ -134,8 +134,9 @@
                 </div>
             </div>
             <div class='post-btn'>
-                <a href='/questions/create'>
-                    <i class='fa-regular fa-pen-to-square post-icon'></i>
+                <a href='/questions/create' class='inline-flex items-center justify-center gap-1 w-full h-full text-3xl font-bold text-white'>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>投稿</span>
                 </a>
             </div>
         </div>

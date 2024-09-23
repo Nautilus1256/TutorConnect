@@ -115,7 +115,8 @@ input[type='text']:focus {
     font-weight: bold;
 }
 .right-area,
-.question-show-area {
+.question-show-area,
+.question-create-area {
     background-color: #FFE682;
 }
 
@@ -167,6 +168,11 @@ input[type='text']:focus {
 .answer-create-background {
     background-color: #FFE682;
 }
-.best-answer {
+.best-answer,
+.question-show-return-btn {
     color: #F1AF2D;
+}
+.question-create-category-type,
+.question-create-return-btn {
+    color: #E7A523;
 }
