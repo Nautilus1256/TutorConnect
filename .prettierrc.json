@@ -1,0 +1,16 @@
+{
+    "printWidth": 500,
+    "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-blade"],
+    "tailwindConfig": "./tailwind.config.js",
+    "overrides": [
+        {
+            "files": "*.blade.php",
+            "options": {
+                "trailingComma": "none",
+                "tabWidth": 4,
+                "semi": false,
+                "singleQuote": false
+            }
+        }
+    ]
+}
