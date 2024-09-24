@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }">
     <!-- Primary Navigation Menu -->
-    <div class="nav-color mt-4 flex h-20 justify-between rounded-lg border-b border-gray-100 px-8">
+    <div class="bg-orange mt-4 flex h-20 justify-between rounded-lg border-b border-gray-100 px-8">
         <div class="flex">
             <!-- Logo -->
             <div class="flex items-center">

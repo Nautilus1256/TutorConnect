@@ -35,7 +35,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="my-body-font">
+            <main class="font-body font-normal not-italic">
                 {{ $slot }}
             </main>
         </div>
