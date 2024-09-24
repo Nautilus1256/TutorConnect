@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="question-create-area my-8 rounded-2xl px-16 py-8">
+    <div class="bg-yellow my-8 rounded-2xl px-16 py-8">
         <form action="/questions" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="user_id">

@@ -6,7 +6,8 @@ likeBtns.forEach((likeBtn) => {
         //クリックされた要素を取得しています。
         const clickedEl = e.target;
         //クリックされた要素にlikedというクラスがあれば削除し、なければ付与します。これにより星の色の切り替えができます。
-        clickedEl.classList.toggle("liked");
+        clickedEl.classList.toggle("text-orangered");
+        clickedEl.classList.toggle("duration-200");
         clickedEl.classList.toggle("fa-solid");
         clickedEl.classList.toggle("fa-regular");
         //記事のidを取得しています。
