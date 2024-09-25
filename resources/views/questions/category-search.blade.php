@@ -10,10 +10,7 @@
         <div class="w-8-10">
             <div class="questions mx-28 mt-20 block">
                 <h2>
-                    @foreach ($selectedCategoryNames as $category)
-                        {{ $category }}
-                    @endforeach
-
+                    {{ $selectedCategoryNames->pluck('name')->implode(" ") }}
                     の検索結果
                 </h2>
                 @if ($questions->isEmpty())

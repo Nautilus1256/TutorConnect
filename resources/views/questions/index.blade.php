@@ -31,7 +31,7 @@
                         </div>
                     @endforeach
 
-                    <button type="submit" class="category-search-btn border-4 border-solid border-orange text-orange text-2xl font-bold shadow-whole-lightgray mx-4 mt-4 rounded-lg p-4">検索</button>
+                    <button type="submit" class="border-4 border-solid border-orange text-orange text-2xl font-bold shadow-whole-lightgray mx-4 mt-4 rounded-lg p-4">検索</button>
                 </form>
             </div>
         </div>
@@ -53,8 +53,7 @@
                                             </p>
                                             <div class="question-category mt-2 flex items-center justify-start text-xs">
                                                 @if ($question->categories->isNotEmpty())
-                                                    <p>カテゴリー：</p>
-                                                    {{ $question->categories->pluck("name")->implode(" ") }}
+                                                    <p>カテゴリー：{{ $question->categories->pluck("name")->implode(" ") }}</p>
                                                 @else
                                                     <p>カテゴリー：なし</p>
                                                 @endif
@@ -73,10 +72,7 @@
                                             </p>
                                             <div class="question-category mt-2 flex items-center justify-start text-xs">
                                                 @if ($question->categories->isNotEmpty())
-                                                    <p>カテゴリー：</p>
-                                                    @foreach ($question->categories as $category)
-                                                        <p>{{ $category->name }}</p>
-                                                    @endforeach
+                                                    <p>カテゴリー：{{ $question->categories->pluck("name")->implode(" ") }}</p>
                                                 @else
                                                     <p>カテゴリー：なし</p>
                                                 @endif

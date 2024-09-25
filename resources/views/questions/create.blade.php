@@ -38,7 +38,7 @@
                                 <div class="flex gap-4">
                                     @foreach ($category_type->categories as $category)
                                         <div>
-                                            <input type="checkbox" name="categories[]" value="{{ $category->id }}" {{ in_array($category->id, old("categories_array", [])) ? "checked" : "" }} />
+                                            <input type="checkbox" name="categories[]" value="{{ $category->id }}" {{ in_array($category->id, old("categories", [])) ? "checked" : "" }} />
                                             {{ $category->name }}
                                         </div>
                                     @endforeach
@@ -52,7 +52,7 @@
                     <input type="file" name="images[]" multiple />
                 </div>
                 <div class="flex justify-center">
-                    <div class="answer-btn rounded-lg px-12 py-4 text-center text-xl font-bold text-white">
+                    <div class="bg-orange rounded-lg px-12 py-4 text-center text-xl font-bold text-white">
                         <input type="submit" value="投稿" />
                     </div>
                 </div>

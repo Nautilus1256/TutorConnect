@@ -66,6 +66,6 @@ class Question extends Model
     
     public function scopeGetPaginateByLimit($query, int $limit_count = 5)
     {
-        return $query->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $query->orderBy('created_at', 'DESC')->paginate($limit_count);
     }
 }
