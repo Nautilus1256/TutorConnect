@@ -91,7 +91,7 @@
         </div>
         <div class="flex items-center justify-around py-4">
             <a href="/questions/{{ $question->id }}/answers/create" class="inline-block">
-                <p class="answer-create-return-btn box-border rounded-lg bg-white px-24 py-4 text-center text-2xl font-bold">返信</p>
+                <p class="text-orange border border-solid border-orange box-border rounded-lg bg-white px-24 py-4 text-center text-2xl font-bold">返信</p>
             </a>
         </div>
 
