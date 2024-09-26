@@ -7,6 +7,7 @@
                 <a href="{{ route("index") }}" class="flex items-center gap-4">
                     <img src="icon-black.png">
                     <h1 class="flex w-auto items-center justify-center text-5xl font-title">TutorConnect</h1>
+                    <p class="text-xl font-body ml-4">家庭教師として働く大学生のためのQ&Aプラットフォーム</p>
                 </a>
             </div>
         </div>
