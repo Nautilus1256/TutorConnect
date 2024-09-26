@@ -49,16 +49,16 @@ class QuestionController extends Controller
     public function edit(Question $question)
     {
         $this->authorize('update', $question);
-        $categories = Category::all();
+        $categoryTypes = CategoryType::with('categories')->get();
         $selected_categories = $question->categories->pluck('id')->toArray();
-        return view('questions.edit')->with(['question' => $question, 'categories' => $categories, 'selected_categories' => $selected_categories]);
+        return view('questions.edit')->with(['question' => $question, 'category_types' => $categoryTypes, 'selected_categories' => $selected_categories]);
     }
     
     public function update(QuestionRequest $request, Question $question)
     {
         $this->authorize('update', $question);
         $input_question = $request['question'];
-        $input_categories = $request->categories_array;
+        $input_categories = $request->categories;
         $question->fill($input_question)->save();
         $question->categories()->sync($input_categories);
         if ($request->hasFile('images')) {
@@ -82,9 +82,10 @@ class QuestionController extends Controller
     public function wordSearch(Request $request, Question $question)
     {
         if ($request->filled('keyword')) {
+            $categoryTypes = CategoryType::with('categories')->get();
             $keyword = $request->input('keyword');
             $questions = $question->where('title', 'LIKE', "%{$keyword}%")->orWhere('body', 'LIKE', "%{$keyword}%")->getPaginateByLimit()->appends(['keyword' => $keyword]);
-            return view('questions.word-search')->with(['questions' => $questions, 'keyword' => $keyword]);
+            return view('questions.word-search')->with(['questions' => $questions, 'keyword' => $keyword, 'category_types' => $categoryTypes]);
         } else {
             return redirect('/');
         }
@@ -93,13 +94,14 @@ class QuestionController extends Controller
     public function categorySearch(Request $request, Question $question)
     {
         if ($request->has('categories')) {
+            $categoryTypes = CategoryType::with('categories')->get();
             $categories = $request->input('categories');
             $selectedCategoryNames = Category::whereIn('id', $categories);
             $questions = $question->whereHas('categories', function ($query) use ($categories) {
                 $query->whereIn('categories.id', $categories);
             });
             $questions = $questions->getPaginateByLimit()->appends(['categories' => $categories]);
-            return view('questions.category-search')->with(['questions' => $questions, 'selectedCategoryNames' => $selectedCategoryNames]);
+            return view('questions.category-search')->with(['questions' => $questions, 'selectedCategoryNames' => $selectedCategoryNames, 'category_types' => $categoryTypes]);
         }
         else {
             return redirect('/');

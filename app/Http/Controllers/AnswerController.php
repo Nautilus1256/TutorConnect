@@ -24,7 +24,7 @@ class AnswerController extends Controller
     public function edit(Question $question, Answer $answer)
     {
         $this->authorize('update', $answer);
-        return view('answers.edit')->with(['question' => $question, 'answer' => $answer]);
+        return view('answers.edit')->with(['question' => $question, 'images' => $question->images()->get(), 'answer' => $answer]);
     }
     
     public function update(AnswerRequest $request, Question $question, Answer $answer)
