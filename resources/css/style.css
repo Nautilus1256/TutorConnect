@@ -32,8 +32,3 @@ input[type="text"]:focus {
     outline: none;
     box-shadow: none;
 }
-
-.question-create-category-type,
-.question-create-return-btn {
-    color: #e7a523;
-}

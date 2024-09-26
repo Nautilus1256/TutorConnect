@@ -4,8 +4,9 @@
         <div class="flex">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="{{ route("index") }}">
-                    <h1 class="flex h-9 w-auto items-center justify-center text-4xl font-title">TutorConnect</h1>
+                <a href="{{ route("index") }}" class="flex items-center gap-4">
+                    <img src="icon-black.png">
+                    <h1 class="flex w-auto items-center justify-center text-5xl font-title">TutorConnect</h1>
                 </a>
             </div>
         </div>

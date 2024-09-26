@@ -6,11 +6,12 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <title>{{ config("app.name", "Laravel") }}</title>
+        <link rel="icon" href="icon-orange.png">
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pangolin&display=swap" rel="stylesheet">
 
         <link rel="preconnect" href="https://fonts.bunny.net" />
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -35,7 +36,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="font-body font-normal not-italic">
+            <main class="font-body">
                 {{ $slot }}
             </main>
         </div>

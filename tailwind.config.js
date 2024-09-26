@@ -9,7 +9,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-                'title': ['"Concert One"', 'sans-serif'],
+                'title': ['"Pangolin"', 'cursive'],
                 'body': ['"M PLUS Rounded 1c"', 'sans-serif'],
             },
             colors: {

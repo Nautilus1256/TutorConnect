@@ -25,7 +25,7 @@
                     <div class="flex flex-col gap-4">
                         @foreach ($category_types as $category_type)
                             <div class="flex flex-col gap-2">
-                                <div class="question-create-category-type text-xl font-bold">
+                                <div class="text-orange text-xl font-bold">
                                     @if ($category_type->name == "教科")
                                         <i class="fa-solid fa-book"></i>
                                     @elseif ($category_type->name == "学年")
@@ -59,7 +59,7 @@
             </div>
         </form>
         <div class="flex items-center justify-start pt-8">
-            <a href="/" class="question-create-return-btn text-2xl font-bold underline">戻る</a>
+            <a href="/" class="text-orange text-2xl font-bold underline">戻る</a>
         </div>
     </div>
 </x-app-layout>
