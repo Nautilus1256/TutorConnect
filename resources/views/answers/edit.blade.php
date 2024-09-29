@@ -27,8 +27,9 @@
         </div>
 
         <div class="answer-area h-screen-40 w-1/2">
-            <form action="/answers" method="POST" class="h-full-16 mx-8 my-8 pb-8">
+            <form action="/questions/{{$question->id }}/answers/{{ $answer->id }}" method="POST" class="h-full-16 mx-8 my-8 pb-8">
                 @csrf
+                @method('PUT')
                 <div class="user_id">
                     <input type="hidden" name="answer[user_id]" value="{{ Auth::user()->id }}" />
                 </div>

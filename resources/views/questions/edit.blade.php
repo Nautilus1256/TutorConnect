@@ -1,7 +1,8 @@
 <x-app-layout>
     <div class="bg-yellow my-8 rounded-2xl px-16 py-8">
-        <form action="/questions" method="POST" enctype="multipart/form-data">
+        <form action="/questions/{{ $question->id }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="user_id">
                 <input type="hidden" name="question[user_id]" value="{{ Auth::user()->id }}" />
             </div>
