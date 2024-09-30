@@ -4,6 +4,12 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
+        
+        <meta property="og:title" content="TutorConnect">
+        <meta property="og:type" content="website">
+        <meta propetry="og:url" content="https://tutorconnect-11e9659f9c5d.herokuapp.com/">
+        <meta property="og:image" content="https://tutorconnect-11e9659f9c5d.herokuapp.com/icon-orange.png">
+        <meta property="og:description" content="家庭教師として働く大学生のためのQ&Aプラットフォーム。家庭教師が抱える不安や悩み、日常の課題を共有し、解決策やアドバイスを得ることができる場を提供します。">
 
         <title>{{ config("app.name", "Laravel") }}</title>
         <link rel="icon" href="{{ asset('icon-orange.png') }}">
