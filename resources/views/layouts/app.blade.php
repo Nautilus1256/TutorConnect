@@ -30,6 +30,9 @@
         <script src="https://kit.fontawesome.com/ef224dbb5e.js" crossorigin="anonymous"></script>
     </head>
     <body class="font-sans antialiased">
+        <div id="loading">
+            <img class="spinner" src="{{ asset('loading.png') }}" alt="">
+        </div>
         <div class="mx-4 min-h-screen overflow-hidden bg-white">
             @include("layouts.mynavigation")
 
