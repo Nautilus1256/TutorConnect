@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <meta name="description" content="家庭教師として働く大学生のためのQ&Aプラットフォーム。家庭教師が抱える不安や悩み、日常の課題を共有し、解決策やアドバイスを得ることができる場を提供します。">
         
         <meta property="og:title" content="TutorConnect">
         <meta property="og:type" content="website">
