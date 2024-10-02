@@ -36,10 +36,9 @@
                     <input type="hidden" name="answer[question_id]" value="{{ $question->id }}" />
                 </div>
                 <div class="comment h-full-23.5 mb-8">
-                    <div class="h-full-6">
-                        <textarea name="answer[comment]" placeholder="回答を入力してください" class="h-full w-full rounded-2xl p-8 text-xl">{{ old("answer.comment") }}</textarea>
-                    </div>
-                    <p class="comment__error" style="color: red">{{ $errors->first("answer.comment") }}</p>
+                    <textarea name="answer[comment]" placeholder="回答を入力してください" class="h-full w-full rounded-2xl p-8 text-xl count-text" data-maxlength="400">{{ old("answer.comment") }}</textarea>
+                    <p><span class="count-display">0</span>/400文字</p>
+                    <p class="comment__error text-red-500">{{ $errors->first("answer.comment") }}</p>
                 </div>
 
                 <div class="flex flex-row-reverse justify-around">
