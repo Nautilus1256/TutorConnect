@@ -10,15 +10,17 @@
                 <div class="flex gap-8">
                     <h2 class="flex items-center text-xl font-bold">質問タイトル</h2>
                     <div class="flex-grow">
-                        <input type="text" name="question[title]" placeholder="タイトル" value="{{ $question->title }}" class="w-full rounded-2xl p-4 text-xl" />
-                        <p class="title__error" style="color: red">{{ $errors->first("question.title") }}</p>
+                        <input type="text" name="question[title]" placeholder="タイトル" value="{{ $question->title }}" class="w-full rounded-2xl p-4 text-xl count-text" data-maxlength="50"/>
+                        <p><span class="count-display">0</span>/50文字</p>
+                        <p class="title__error text-red-500">{{ $errors->first("question.title") }}</p>
                     </div>
                 </div>
                 <div class="flex gap-8">
                     <h2 class="flex items-center text-xl font-bold">質問内容詳細</h2>
                     <div class="flex-grow">
-                        <textarea name="question[body]" placeholder="質問内容詳細" class="h-36.5 w-full rounded-2xl p-4 text-xl">{{ $question->body }}</textarea>
-                        <p class="body__error" style="color: red">{{ $errors->first("question.body") }}</p>
+                        <textarea name="question[body]" placeholder="質問内容詳細" class="h-36.5 w-full rounded-2xl p-4 text-xl count-text" data-maxlength="400">{{ $question->body }}</textarea>
+                        <p><span class="count-display">0</span>/400文字</p>
+                        <p class="body__error text-red-500">{{ $errors->first("question.body") }}</p>
                     </div>
                 </div>
                 <div class="flex gap-8">
